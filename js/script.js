@@ -32,7 +32,7 @@ const initialQuotation = async () => {
 initialQuotation();
 
 // changing elements according to the selected option
-option.addEventListener('change', async () => {
+select.addEventListener('change', async () => {
     meme = document.querySelector('.dollarLessThan5');
     const quotations = await getCurrency();
 
@@ -40,7 +40,7 @@ option.addEventListener('change', async () => {
     inputReal.value = '';
 
     // foreign country flag image
-    const convertedCurrencyImage = document.getElementById('converted-image');
+    const convertedCurrencyImage = document.getElementById('currency-container');
 
     let newSrc = '';
     let currencyName = '';
@@ -63,12 +63,28 @@ option.addEventListener('change', async () => {
             break;
 
         case 2:
-            newSrc = './assets/japao.jpg';
+            newSrc = './assets/japao.png';
             currencyName = 'Yen';
             quotation = quotations.yenQuotation;
             currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
             meme.style.opacity = '0';
             break;
+
+        case 3:
+            newSrc = './assets/bitcoin.png';
+            currencyName = 'Bitcoin';
+            quotation = quotations.btcQuotation;
+            currencyModel = new Intl.NumberFormat('btc-BTC', { style: 'currency', currency: 'BTC' });
+            meme.style.opacity = '0';
+            break;
+
+        case 4:
+        newSrc = './assets/russia.png';
+        currencyName = 'Rublo';
+        quotation = quotations.rubloQuotation;
+        currencyModel = new Intl.NumberFormat('rub-RUB', { style: 'currency', currency: 'RUB' });
+        meme.style.opacity = '0';
+        break;
 
         default:
             break;
@@ -84,23 +100,23 @@ option.addEventListener('change', async () => {
 
 // input tweaks
 const inputSync = event => {
-    if (userValue.style.borderColor !== '#3b3c47') userValue.style.borderColor = '#3b3c47';
+    if (inputReal.style.borderColor !== '#3b3c47') inputReal.style.borderColor = '#3b3c47';
 
     if (event.key === 'Enter') {
         convert();
     }
 };
-userValue.addEventListener('keypress', inputSync);
+inputReal.addEventListener('keypress', inputSync);
 
 // syncing toConvert and converted value after width
-const widthAfterSync = () => {
-    const toConvertWidth = toConvertValue.offsetWidth;
-    const convertedWidth = convertedValue.offsetWidth;
+// const widthAfterSync = () => {
+//     const toConvertWidth = toConvertValue.offsetWidth;
+//     const convertedWidth = convertedValue.offsetWidth;
 
-    toConvertValue.style.setProperty('--js-width1', `${toConvertWidth + 6}px`);
-    convertedValue.style.setProperty('--js-width2', `${convertedWidth + 6}px`);
-};
-widthAfterSync();
+//     toConvertValue.style.setProperty('--js-width1', `${toConvertWidth + 6}px`);
+//     convertedValue.style.setProperty('--js-width2', `${convertedWidth + 6}px`);
+// };
+// widthAfterSync();
 
 // converting action
 const convert = async () => {
@@ -120,17 +136,25 @@ const convert = async () => {
             quotation = quotations.yenQuotation;
             break;
 
+        case 3:
+            quotation = quotations.btcQuotation;
+            break;
+
+        case 4:
+            quotation = quotations.rubloQuotation;
+            break;
+
         default:
             break;
     }
 
-    if (userValue.value == '') {
-        userValue.style.borderColor = '#980d0d';
+    if (inputReal.value == '') {
+        inputReal.style.borderColor = '#980d0d';
         toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
         convertedValue.innerHTML = currencyModel.format(0);
     } else {
-        result = parseFloat(userValue.value) / quotation;
-        toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(parseFloat(userValue.value));
+        result = parseFloat(inputReal.value) / quotation;
+        toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(parseFloat(inputReal.value));
         convertedValue.innerHTML = currencyModel.format(result);
     }
 
