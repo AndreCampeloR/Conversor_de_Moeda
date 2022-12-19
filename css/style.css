@@ -162,6 +162,7 @@ section{
     display: block;
 }
 
+
 @media screen and (max-width:400px){
     header{
         border-radius: 0;
