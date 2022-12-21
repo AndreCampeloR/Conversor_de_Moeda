@@ -2,18 +2,34 @@
 const getCurrency = async () => {
     const url = 'http://economia.awesomeapi.com.br/json/last/EUR-BRL,USD-BRL,JPY-BRL,RUB-BRL,BTC-BRL';
 
-    try {
-        const apiData = await fetch(url).then(res => res.json());
-        return { euroQuotation: apiData['EURBRL'].high, dollarQuotation: apiData['USDBRL'].high, yenQuotation: apiData['JPYBRL'].high, rubloQuotation: apiData['RUBBRL'].high, btcQuotation: apiData['BTCBRL'].high };
-    } catch (err) {
-        console.error('ErrOr:', err.message);
-    }
-};
+
+    const apiData = await fetch(url);
+	const Dados = await apiData.json();
+
+    const quotation = Dados
+    console.log(quotation.JPYBRL.high)
+    // var euroQuotation = Dados['EURBRL'].high
+    // var dollarQuotation = Dados['USDBRL'].high
+    // var yenQuotation = Dados['JPYBRL'].high
+    // var rubloQuotation = Dados['RUBBRL'].high 
+    // var btcQuotation = Dados['BTCBRL'].high
 
 const inputReal = document.getElementById('input-real');
 const valorReal = document.getElementById('real-text');
 
 const select = document.getElementById('select');
+
+const containerConvert = document.getElementById('container-convert');
+const imgConvert = document.getElementById('img-convert');
+const nameConvert = document.getElementById('name-convert');
+const valueConvert = document.getElementById('value-convert');
+
+const arrowimg = document.getElementById('arrowimg');
+
+// let newSrc;
+// containerConvert.textContent = `${currencyName} (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
+// convertedValue.innerHTML = currencyModel.format(0);
+// toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
 
 // const convertedCurrencyName = document.querySelector('.converted-symbol-name');
 
@@ -26,60 +42,59 @@ const select = document.getElementById('select');
 // const convertButton = document.getElementById('convert-button')
 
 // showing initial quotation (euro)
-// const initialQuotation = async () => {
-//     const quotations = await getCurrency();
-//     convertedCurrencyName.textContent = `Euro (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotations.euroQuotation)})`;
-// };
-// initialQuotation();
+const initialQuotation = async () => {
+        valueConvert.innerHTML = valueConvert.innerHTML = `US$ ${dollarQuotation}`;
+    };
+    initialQuotation();
 
 // changing elements according to the selected option
 select.addEventListener('click', async () => {
-    const quotations = await getCurrency();
-
+    // const quotations = await getCurrency();
+    
+   
     // resetando input
-    valorReal.innerHTML = '';
+    // valorReal.innerHTML = '';
+    // valueConvert.innerHTML = '';
     
     select.addEventListener('change', ()=>{
-
+    
         switch (select.value) {
             case "US$ Dólar americano":
-                newSrc = './assets/eua.png';
-                currencyName = 'Euro';
-                quotation = quotations.euroQuotation;
-                currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
+                imgConvert.src = './assets/eua.png';
+                nameConvert.textContent = 'Dólar americano';
+                valueConvert.innerHTML = `US$ ${quotation.USDBRL.high}`;
                 break;
                 
-                case "€ Euro":
-                newSrc = './assets/euro.png';
-                currencyName = 'Dollar';
-                quotation = quotations.dollarQuotation;
-                currencyModel = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            case "€ Euro":
+                imgConvert.src = './assets/euro.png';
+                nameConvert.textContent = 'Euro'
+                valueConvert.innerHTML = `€ ${quotation.EURBRL.high}`;
                 break;
                 
             case "₽ Rublo Russo":
-                newSrc = './assets/russia.png';
-                currencyName = 'Yen';
-                quotation = quotations.yenQuotation;
-                currencyModel = new Intl.NumberFormat('jp-JP', { style: 'currency', currency: 'JPY' });
+                imgConvert.src = './assets/russia.png';
+                nameConvert.textContent = 'Rublo Russo';
+                valueConvert.innerHTML = `₽ ${quotation.RUBBRL.high}`;
                 break;
                 
             case " ¥ Yen":
-                newSrc = './assets/japao.png';
-                currencyName = 'Bitcoin';
-                quotation = quotations.btcQuotation;
-                currencyModel = new Intl.NumberFormat('btc-BTC', { style: 'currency', currency: 'BTC' });
+                imgConvert.src = './assets/japao.png';
+                nameConvert.textContent = 'Yen';
+                arrowimg.classList.add("yen")
+                valueConvert.innerHTML = `¥ ${quotation.JPYBRL.high}`;
                 break;
                     
             case "₿ Bitcoin":
-            newSrc = './assets/bitcoin.png';
-            currencyName = 'Rublo';
-            quotation = quotations.rubloQuotation;
-            currencyModel = new Intl.NumberFormat('rub-RUB', { style: 'currency', currency: 'RUB' });
-            break;
+                imgConvert.src = './assets/bitcoin.png';
+                nameConvert.textContent = 'Bitcoin';
+                valueConvert.innerHTML = `₿ ${quotation.BTCBRL.high}`;
+                break;
     
             default:
                 break;
     }})
+       
+
     // foreign country flag image
     // const convertedCurrencyImage = document.querySelectorAll('.currency-container');
 
@@ -87,11 +102,11 @@ select.addEventListener('click', async () => {
     // let currencyName = '';
     // let quotation = '';
     })
+   
+};
 
-//     convertedCurrencyImage.src = newSrc;
-//     convertedCurrencyName.textContent = `${currencyName} (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
-//     convertedValue.innerHTML = currencyModel.format(0);
-//     toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
+
+getCurrency();
 
 //     widthAfterSync();
 // });

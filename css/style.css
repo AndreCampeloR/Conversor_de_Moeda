@@ -162,6 +162,9 @@ section{
     display: block;
 }
 
+.yen{
+    margin: auto;
+}
 
 @media screen and (max-width:400px){
     header{
