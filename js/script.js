@@ -7,13 +7,13 @@ const getCurrency = async () => {
 	const Dados = await apiData.json();
 
     const quotation = Dados
-    console.log(quotation.JPYBRL.high)
     // var euroQuotation = Dados['EURBRL'].high
     // var dollarQuotation = Dados['USDBRL'].high
     // var yenQuotation = Dados['JPYBRL'].high
     // var rubloQuotation = Dados['RUBBRL'].high 
     // var btcQuotation = Dados['BTCBRL'].high
 
+    // element
 const inputReal = document.getElementById('input-real');
 const valorReal = document.getElementById('real-text');
 
@@ -26,36 +26,54 @@ const valueConvert = document.getElementById('value-convert');
 
 const arrowimg = document.getElementById('arrowimg');
 
-// let newSrc;
-// containerConvert.textContent = `${currencyName} (${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(quotation)})`;
-// convertedValue.innerHTML = currencyModel.format(0);
-// toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
-
-// const convertedCurrencyName = document.querySelector('.converted-symbol-name');
-
-// const convertedValue = document.getElementById('currency-value-text');
-// let currencyModel = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
+const convertButton = document.getElementById('convert-button')
 
 
-// const toConvertValue = document.querySelector('.to-convert-value');
-
-// const convertButton = document.getElementById('convert-button')
-
-// showing initial quotation (euro)
+// showing initial quotation (dolar)
 const initialQuotation = async () => {
-        valueConvert.innerHTML = valueConvert.innerHTML = `US$ ${dollarQuotation}`;
+        let initialResult = (1) / quotation.USDBRL.high;
+        valueConvert.innerHTML = `US$ ${initialResult.toFixed(2)}`;
     };
     initialQuotation();
 
+
+function convert(){
+    let result
+    switch (select.value) {
+        case "US$ Dólar americano":
+            result = (1) / quotation.USDBRL.high;
+            valueConvert.innerHTML = `US$ ${result.toFixed(2)}`;
+            break;
+            
+        case "€ Euro":
+            result = (1) / quotation.EURBRL.high;
+            valueConvert.innerHTML = `€ ${result.toFixed(2)}`;
+            break;
+            
+        case "₽ Rublo Russo":
+            result = (1) / quotation.EURBRL.high;
+            valueConvert.innerHTML = `₽ ${result.toFixed(2)}`;
+            break;
+            
+        case " ¥ Yen":
+            result = (1) / quotation.EURBRL.high;
+            valueConvert.innerHTML = `¥  ${result.toFixed(2)}`;
+            break;
+                
+        case "₿ Bitcoin":
+            result = (1) / quotation.EURBRL.high;
+            valueConvert.innerHTML = `₿ ${result.toFixed(2)}`;
+            break;
+
+        default:
+            break;
+            }
+
+}
+
 // changing elements according to the selected option
 select.addEventListener('click', async () => {
-    // const quotations = await getCurrency();
-    
-   
-    // resetando input
-    // valorReal.innerHTML = '';
-    // valueConvert.innerHTML = '';
-    
+  
     select.addEventListener('change', ()=>{
     
         switch (select.value) {
@@ -93,16 +111,9 @@ select.addEventListener('click', async () => {
             default:
                 break;
     }})
-       
 
-    // foreign country flag image
-    // const convertedCurrencyImage = document.querySelectorAll('.currency-container');
-
-    // let newSrc = '';
-    // let currencyName = '';
-    // let quotation = '';
-    })
-   
+})
+  convertButton.addEventListener('click', convert);
 };
 
 
@@ -162,7 +173,7 @@ getCurrency();
 
 //     widthAfterSync();
 // };
-// convertButton.addEventListener('click', convert);
+
 
 
 
