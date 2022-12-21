@@ -41,27 +41,27 @@ function convert(){
     let result
     switch (select.value) {
         case "US$ Dólar americano":
-            result = (1) / quotation.USDBRL.high;
+            result = (inputReal.value) / quotation.USDBRL.high;
             valueConvert.innerHTML = `US$ ${result.toFixed(2)}`;
             break;
             
         case "€ Euro":
-            result = (1) / quotation.EURBRL.high;
+            result = (inputReal.value) / quotation.EURBRL.high;
             valueConvert.innerHTML = `€ ${result.toFixed(2)}`;
             break;
             
         case "₽ Rublo Russo":
-            result = (1) / quotation.EURBRL.high;
+            result = (inputReal.value) / quotation.RUBBRL.high;
             valueConvert.innerHTML = `₽ ${result.toFixed(2)}`;
             break;
             
         case " ¥ Yen":
-            result = (1) / quotation.EURBRL.high;
+            result = (inputReal.value) / quotation.JPYBRL.high;
             valueConvert.innerHTML = `¥  ${result.toFixed(2)}`;
             break;
                 
         case "₿ Bitcoin":
-            result = (1) / quotation.EURBRL.high;
+            result = (inputReal.value) / quotation.BTCBRL.high;
             valueConvert.innerHTML = `₿ ${result.toFixed(2)}`;
             break;
 
@@ -81,18 +81,21 @@ select.addEventListener('click', async () => {
                 imgConvert.src = './assets/eua.png';
                 nameConvert.textContent = 'Dólar americano';
                 valueConvert.innerHTML = `US$ ${quotation.USDBRL.high}`;
+                inputReal.value = ''
                 break;
                 
             case "€ Euro":
                 imgConvert.src = './assets/euro.png';
                 nameConvert.textContent = 'Euro'
                 valueConvert.innerHTML = `€ ${quotation.EURBRL.high}`;
+                inputReal.value = ''
                 break;
                 
             case "₽ Rublo Russo":
                 imgConvert.src = './assets/russia.png';
                 nameConvert.textContent = 'Rublo Russo';
                 valueConvert.innerHTML = `₽ ${quotation.RUBBRL.high}`;
+                inputReal.value = ''
                 break;
                 
             case " ¥ Yen":
@@ -100,12 +103,14 @@ select.addEventListener('click', async () => {
                 nameConvert.textContent = 'Yen';
                 arrowimg.classList.add("yen")
                 valueConvert.innerHTML = `¥ ${quotation.JPYBRL.high}`;
+                inputReal.value = ''
                 break;
                     
             case "₿ Bitcoin":
                 imgConvert.src = './assets/bitcoin.png';
                 nameConvert.textContent = 'Bitcoin';
                 valueConvert.innerHTML = `₿ ${quotation.BTCBRL.high}`;
+                inputReal.value = ''
                 break;
     
             default:
