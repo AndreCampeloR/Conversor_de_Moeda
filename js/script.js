@@ -11,9 +11,9 @@ const getCurrency = async () => {
     // var dollarQuotation = Dados['USDBRL'].high
     // var yenQuotation = Dados['JPYBRL'].high
     // var rubloQuotation = Dados['RUBBRL'].high 
-    // var btcQuotation = Dados['BTCBRL'].high
+    var btcQuotation = quotation.BTCBRL.high * 1000   //API doesnt return correct value ----- API não retorna valor correto
 
-    // element
+    // element ----- elementos 
 const inputReal = document.getElementById('input-real');
 const valorReal = document.getElementById('real-text');
 
@@ -29,16 +29,18 @@ const arrowimg = document.getElementById('arrowimg');
 const convertButton = document.getElementById('convert-button')
 
 
-// showing initial quotation (dolar)
+// showing initial quotation (dolar) ----- mostrando a cotação inicial (dolar)
 const initialQuotation = async () => {
         let initialResult = (1) / quotation.USDBRL.high;
         valueConvert.innerHTML = `US$ ${initialResult.toFixed(2)}`;
     };
     initialQuotation();
 
+// convert button ----- botão de conversão
 
 function convert(){
-    valorReal.innerHTML = `R$ ${inputReal.value}`
+    
+    valorReal.innerHTML = `R$ ${inputReal.value}`      
     let result
     switch (select.value) {
         case "US$ Dólar americano":
@@ -62,8 +64,8 @@ function convert(){
             break;
                 
         case "₿ Bitcoin":
-            result = (inputReal.value) / quotation.BTCBRL.high;
-            valueConvert.innerHTML = `₿ ${result.toFixed(2)}`;
+            result = (inputReal.value) / btcQuotation;
+            valueConvert.innerHTML = `₿ ${result.toFixed(4)}`;
             break;
 
         default:
@@ -72,16 +74,19 @@ function convert(){
 
 }
 
-// changing elements according to the selected option
+// changing elements according to the selected option  ----- mudando elementos de acordo com a opcão selecionada 
 select.addEventListener('click', async () => {
   
     select.addEventListener('change', ()=>{
     
+        let quotationBase 
+
         switch (select.value) {
             case "US$ Dólar americano":
                 imgConvert.src = './assets/eua.png';
                 nameConvert.textContent = 'Dólar americano';
-                valueConvert.innerHTML = `US$ ${quotation.USDBRL.high}`;
+                quotationBase = (1) / quotation.USDBRL.high;
+                valueConvert.innerHTML = `US$ ${quotationBase.toFixed(2)}`;
                 inputReal.value = ''
                 valorReal.innerHTML = 'R$ '
                 break;
@@ -89,7 +94,8 @@ select.addEventListener('click', async () => {
             case "€ Euro":
                 imgConvert.src = './assets/euro.png';
                 nameConvert.textContent = 'Euro'
-                valueConvert.innerHTML = `€ ${quotation.EURBRL.high}`;
+                quotationBase = (1) / quotation.EURBRL.high;
+                valueConvert.innerHTML = `€ ${quotationBase.toFixed(2)}`;
                 inputReal.value = ''
                 valorReal.innerHTML = 'R$ '
                 break;
@@ -97,7 +103,8 @@ select.addEventListener('click', async () => {
             case "₽ Rublo Russo":
                 imgConvert.src = './assets/russia.png';
                 nameConvert.textContent = 'Rublo Russo';
-                valueConvert.innerHTML = `₽ ${quotation.RUBBRL.high}`;
+                quotationBase = (1) / quotation.RUBBRL.high;
+                valueConvert.innerHTML = `₽ ${quotationBase.toFixed(2)}`;
                 inputReal.value = ''
                 valorReal.innerHTML = 'R$ '
                 break;
@@ -106,7 +113,8 @@ select.addEventListener('click', async () => {
                 imgConvert.src = './assets/japao.png';
                 nameConvert.textContent = 'Yen';
                 arrowimg.classList.add("yen")
-                valueConvert.innerHTML = `¥ ${quotation.JPYBRL.high}`;
+                quotationBase = (1) / quotation.JPYBRL.high;
+                valueConvert.innerHTML = `¥ ${quotationBase.toFixed(2)}`;
                 inputReal.value = ''
                 valorReal.innerHTML = 'R$ '
                 break;
@@ -114,7 +122,8 @@ select.addEventListener('click', async () => {
             case "₿ Bitcoin":
                 imgConvert.src = './assets/bitcoin.png';
                 nameConvert.textContent = 'Bitcoin';
-                valueConvert.innerHTML = `₿ ${quotation.BTCBRL.high}`;
+                quotationBase = (1) / btcQuotation;
+                valueConvert.innerHTML = `₿ ${quotationBase.toPrecision(4)}`;
                 inputReal.value = ''
                 valorReal.innerHTML = 'R$ '
                 break;
