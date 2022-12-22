@@ -38,6 +38,7 @@ const initialQuotation = async () => {
 
 
 function convert(){
+    valorReal.innerHTML = `R$ ${inputReal.value}`
     let result
     switch (select.value) {
         case "US$ Dólar americano":
@@ -82,6 +83,7 @@ select.addEventListener('click', async () => {
                 nameConvert.textContent = 'Dólar americano';
                 valueConvert.innerHTML = `US$ ${quotation.USDBRL.high}`;
                 inputReal.value = ''
+                valorReal.innerHTML = 'R$ '
                 break;
                 
             case "€ Euro":
@@ -89,6 +91,7 @@ select.addEventListener('click', async () => {
                 nameConvert.textContent = 'Euro'
                 valueConvert.innerHTML = `€ ${quotation.EURBRL.high}`;
                 inputReal.value = ''
+                valorReal.innerHTML = 'R$ '
                 break;
                 
             case "₽ Rublo Russo":
@@ -96,6 +99,7 @@ select.addEventListener('click', async () => {
                 nameConvert.textContent = 'Rublo Russo';
                 valueConvert.innerHTML = `₽ ${quotation.RUBBRL.high}`;
                 inputReal.value = ''
+                valorReal.innerHTML = 'R$ '
                 break;
                 
             case " ¥ Yen":
@@ -104,6 +108,7 @@ select.addEventListener('click', async () => {
                 arrowimg.classList.add("yen")
                 valueConvert.innerHTML = `¥ ${quotation.JPYBRL.high}`;
                 inputReal.value = ''
+                valorReal.innerHTML = 'R$ '
                 break;
                     
             case "₿ Bitcoin":
@@ -111,6 +116,7 @@ select.addEventListener('click', async () => {
                 nameConvert.textContent = 'Bitcoin';
                 valueConvert.innerHTML = `₿ ${quotation.BTCBRL.high}`;
                 inputReal.value = ''
+                valorReal.innerHTML = 'R$ '
                 break;
     
             default:
