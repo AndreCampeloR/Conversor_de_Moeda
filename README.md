@@ -1,3 +1,16 @@
+<table align="right">
+  <tr>
+    <td>
+      <a href="readme-en.md">🇺🇸 English</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="README.md">🇧🇷 Português</a>
+    </td>
+  </tr>
+</table>
+
 # Conversor :coin:
 | Link do Projeto { <a href= "https://andrecampelor.github.io/ProjetoGaleria/"> Conversor de Moeda </a>} |
 
@@ -9,11 +22,10 @@ As opções de conversão são ( Dolar|Euro|RubloRusso|Yen|Bitcoin )
 A cotação é atualizada a cada 30 minutos utilizando a <a href= "http://economia.awesomeapi.com.br"> API </a>
 
 ## Layout mobile :iphone:
-<img height="550px" src="assets/galleriaRespo.png">
+<img height="450px" src="assets/conversor.png">
 
 ## Layout web :computer:
-<img width="900px" src="assets/galleria.png">
-<img width="908px" src="assets/galleria1.png">
+<img width="900px" src="assets/conversor2.png">
 
 ### Tecnologias utilizadas :rocket:
 - HTML
