@@ -7,10 +7,7 @@ const getCurrency = async () => {
 	const Dados = await apiData.json();
 
     const quotation = Dados
-    // var euroQuotation = Dados['EURBRL'].high
-    // var dollarQuotation = Dados['USDBRL'].high
-    // var yenQuotation = Dados['JPYBRL'].high
-    // var rubloQuotation = Dados['RUBBRL'].high 
+
     var btcQuotation = quotation.BTCBRL.high * 1000   //API doesnt return correct value ----- API não retorna valor correto
 
     // element ----- elementos 
@@ -152,35 +149,6 @@ getCurrency();
 // };
 // inputReal.addEventListener('keypress', inputSync);
 
-// const convert = async () => {
-//     const quotations = await getCurrency();
-
-//     let quotation = '';
-//     switch (option.selectedIndex) {
-//         case 0:
-//             quotation = quotations.euroQuotation;
-//             break;
-
-//         case 1:
-//             quotation = quotations.dollarQuotation;
-//             break;
-
-//         case 2:
-//             quotation = quotations.yenQuotation;
-//             break;
-
-//         case 3:
-//             quotation = quotations.btcQuotation;
-//             break;
-
-//         case 4:
-//             quotation = quotations.rubloQuotation;
-//             break;
-
-//         default:
-//             break;
-//     }
-
 //     if (inputReal.value == '') {
 //         inputReal.style.borderColor = '#980d0d';
 //         toConvertValue.textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(0);
@@ -191,7 +159,7 @@ getCurrency();
 //         convertedValue.innerHTML = currencyModel.format(result);
 //     }
 
-//     widthAfterSync();
+//    
 // };
 
 
