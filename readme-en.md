@@ -12,7 +12,7 @@
 </table>
 
 # Conversor :coin:
-| Project Link { <a href= "https://andrecampelor.github.io/ProjetoGaleria/"> Currency Converter </a>} |
+| Project Link { <a href= "https://andrecampelor.github.io/Conversor_de_Moeda/"> Currency Converter </a>} |
 
 ## About  :memo:
 The project consists of a currency converter that converts the entered value in Real for selected currency
