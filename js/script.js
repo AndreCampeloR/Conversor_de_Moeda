@@ -132,8 +132,6 @@ select.addEventListener('click', async () => {
 })
   convertButton.addEventListener('click', convert);
 };
-
-
 getCurrency();
 
 //     widthAfterSync();
