@@ -1,6 +1,6 @@
 // API
 const getCurrency = async () => {
-    const url = 'http://economia.awesomeapi.com.br/json/last/EUR-BRL,USD-BRL,JPY-BRL,RUB-BRL,BTC-BRL';
+    const url = 'https://economia.awesomeapi.com.br/json/last/EUR-BRL,USD-BRL,JPY-BRL,RUB-BRL,BTC-BRL';
 
 
     const apiData = await fetch(url);
