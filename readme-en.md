@@ -11,7 +11,7 @@
   </tr>
 </table>
 
-# Conversor :coin:
+# Conversor 💰
 | Project Link { <a href= "https://andrecampelor.github.io/Conversor_de_Moeda/"> Currency Converter </a>} |
 
 ## About  :memo:
