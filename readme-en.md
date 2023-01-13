@@ -19,7 +19,7 @@ The project consists of a currency converter that converts the entered value in 
 
 The conversion options are ( Dolar|Euro|RubloRusso|Yen|Bitcoin )
 
-the quote is updated every 30 minutes using <a href= "http://economia.awesomeapi.com.br"> API </a>
+the quote is updated every 30 minutes using API { <a href= "https://docs.awesomeapi.com.br/api-de-moedas"> api-de-moedas</a> }
 
 ## Layout mobile :iphone:
 <img height="450px" src="assets/conversor.png">
