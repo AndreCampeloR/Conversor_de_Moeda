@@ -19,7 +19,7 @@ O projeto consiste em um conversor de moedas que converte o valor inserido em Re
 
 As opções de conversão são ( Dolar|Euro|RubloRusso|Yen|Bitcoin )
 
-A cotação é atualizada a cada 30 minutos utilizando a <a href= "http://economia.awesomeapi.com.br"> API </a>
+A cotação é atualizada a cada 30 minutos utilizando a API { <a href= "https://docs.awesomeapi.com.br/api-de-moedas"> api-de-moedas</a> }
 
 ## Layout mobile :iphone:
 <img height="450px" src="assets/conversor.png">
